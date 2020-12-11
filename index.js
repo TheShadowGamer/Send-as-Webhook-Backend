@@ -11,8 +11,6 @@ app.post("/send", async (req, res) => {
     const split = WebhookURL.split("/")
     const id = split[5]
     const token = split[6]
-    console.log(id)
-    console.log(token)
     if(id == '' || !id || token == '' || !token) return res.json({ status: "error", reason: 'Invalid Webhook'})
     let webhook = new Discord.WebhookClient(id, token)
     const embed = new Discord.MessageEmbed()
