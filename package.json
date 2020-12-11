@@ -1,0 +1,23 @@
+{
+  "name": "send-as-webhook-backend",
+  "version": "1.0.0",
+  "description": "The backend for the send message with webhook plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theshadowgamer/send-as-webhook-backend.git"
+  },
+  "author": "Anonymous",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theshadowgamer/send-as-webhook-backend/issues"
+  },
+  "homepage": "https://github.com/theshadowgamer/send-as-webhook-backend#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1"
+  }
+}
