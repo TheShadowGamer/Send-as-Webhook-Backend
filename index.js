@@ -11,12 +11,10 @@ app.post("/send", async (req, res) => {
     const split = WebhookURL.split("/")
     const id = split[5]
     const token = split[6]
-    let webhook
-    try {
-        webhook = new Discord.WebhookClient(id, token).catch()
-    }   catch (err) {
-        return res.json({ status: "error", reason: 'Invalid Webhook'})
-    }
+    console.log(id)
+    console.log(token)
+    if(id == '' || !id || token == '' || !token) return res.json({ status: "error", reason: 'Invalid Webhook'})
+    let webhook = new Discord.WebhookClient(id, token)
     const embed = new Discord.MessageEmbed()
         .setDescription(req.body.description)
     if(req.body.title) embed.setTitle(req.body.title)
