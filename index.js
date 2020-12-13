@@ -13,6 +13,7 @@ app.post("/send", async (req, res) => {
     const token = split[6]
     if(id == '' || !id || token == '' || !token) return res.json({ status: "error", reason: 'Invalid Webhook'})
     let webhook = new Discord.WebhookClient(id, token)
+    if(!webhook) return res.json({ status: "error", reason: 'Invalid Webhook'})
     const embed = new Discord.MessageEmbed()
         .setDescription(req.body.description)
     if(req.body.title) embed.setTitle(req.body.title)
@@ -27,7 +28,11 @@ app.post("/send", async (req, res) => {
     } else {
         embed.setThumbnail(req.body.image)
     }
-    await webhook.send(embed)
+    try {
+        await webhook.send(embed)
+    } catch {
+        return res.json({ status: "error", reason: 'Invalid Webhook'})
+    }
     webhook.destroy()
     res.json({ status: "ok" })
 })
